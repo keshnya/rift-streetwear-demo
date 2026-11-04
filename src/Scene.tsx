@@ -22,20 +22,12 @@ export function Scene() {
     rim.position.set(3, -1, 2); scene.add(rim);
     const group = new THREE.Group();
     scene.add(group);
-    const metal = new THREE.MeshStandardMaterial({ color: 0xc9d1c0, metalness: .65, roughness: .24 });
-    const lime = new THREE.MeshStandardMaterial({ color: 0xc6ff00, emissive: 0x5a7000, emissiveIntensity: .4, roughness: .3 });
-    const shape = new THREE.Shape();
-    shape.moveTo(-.09, .32); shape.lineTo(-.17, .76); shape.lineTo(0, 1.48); shape.lineTo(.17, .76); shape.lineTo(.09, .32); shape.closePath();
-    const geometry = new THREE.ExtrudeGeometry(shape, { depth: .13, bevelEnabled: true, bevelSegments: 2, steps: 1, bevelSize: .025, bevelThickness: .025 });
-    for (let i = 0; i < 8; i++) {
-      const blade = new THREE.Mesh(geometry, metal);
-      blade.rotation.z = i * Math.PI / 4;
-      group.add(blade);
-    }
-    const ringGeometry = new THREE.TorusGeometry(1.7, .018, 8, 96);
-    const ring = new THREE.Mesh(ringGeometry, lime); group.add(ring);
-    const coreGeometry = new THREE.OctahedronGeometry(.25);
-    const core = new THREE.Mesh(coreGeometry, lime); group.add(core);
+    const wire = new THREE.MeshBasicMaterial({color: 0xc5ff00, wireframe: true, transparent: true, opacity: .55});
+    const geometry = new THREE.TorusKnotGeometry(1, .23, 120, 12);
+    const knot = new THREE.Mesh(geometry, wire); group.add(knot);
+    const ringMaterial = new THREE.MeshBasicMaterial({color: 0xc5ff00});
+    const ringGeometry = new THREE.TorusGeometry(1.85, .006, 8, 100);
+    const ring = new THREE.Mesh(ringGeometry, ringMaterial); ring.rotation.x = 1; group.add(ring);
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0, visible = true, elapsed = 0, previous = 0, targetX = 0, targetY = 0;
     const draw = () => renderer.render(scene, camera);
@@ -45,7 +37,7 @@ export function Scene() {
       group.rotation.x += (.18 + targetY * .3 - group.rotation.x) * .06;
       group.rotation.y += (-.25 + Math.sin(elapsed * .45) * .22 + targetX * .4 - group.rotation.y) * .06;
       group.rotation.z = elapsed * .085;
-      core.rotation.y = elapsed * .5;
+      knot.rotation.y = elapsed * .12;
       draw(); frame = requestAnimationFrame(animate);
     };
     const sync = () => {
@@ -71,7 +63,7 @@ export function Scene() {
       cancelAnimationFrame(frame); observer.disconnect(); resizeObserver.disconnect();
       el.removeEventListener('pointermove', move); el.removeEventListener('pointerleave', leave);
       document.removeEventListener('visibilitychange', sync); motion.removeEventListener('change', sync);
-      geometry.dispose(); ringGeometry.dispose(); coreGeometry.dispose(); metal.dispose(); lime.dispose(); renderer.dispose();
+      geometry.dispose(); ringGeometry.dispose(); wire.dispose(); ringMaterial.dispose(); renderer.dispose();
       el.removeChild(renderer.domElement);
     };
   }, []);

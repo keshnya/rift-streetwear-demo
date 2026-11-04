@@ -25,3 +25,8 @@
 @media(prefers-reduced-motion:reduce){.scene{display:block}}
 .rail{scroll-snap-type:none}
 
+
+/* Crop the white dividers embedded in the product contact sheet. */
+.product-art{inset:0;transform:scale(1.08)}
+.manifesto em{color:#111;-webkit-text-stroke:0}
+.manifesto h2{line-height:1.18}
