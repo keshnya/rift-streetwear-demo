@@ -32,7 +32,7 @@
 .manifesto h2{line-height:1.18}
 /* A restrained dimensional brand signature in the campaign hero. */
 .brand-scene{top:50%;right:5%;width:clamp(210px,29vw,430px);height:auto;aspect-ratio:auto;transform:translateY(-50%);perspective:900px;pointer-events:none}
-.brand-motion{position:relative;display:grid;place-items:center;transform-style:preserve-3d;animation:rift-turn 9s ease-in-out infinite alternate;will-change:transform}
+.brand-motion{position:relative;display:grid;place-items:center;transform-style:preserve-3d;animation:rift-turn 4.5s ease-in-out infinite alternate;will-change:transform}
 .brand-motion span{grid-area:1/1;font:900 clamp(56px,8vw,125px)/1 Unbounded,sans-serif;letter-spacing:-.04em}
 .brand-face{position:relative;color:#c6ff00;transform:translateZ(8px)}
 .brand-depth{color:#638000;transform:translate3d(3px,4px,-8px);text-shadow:1px 1px #526900,2px 2px #526900,3px 3px #526900,4px 4px #526900}
@@ -44,3 +44,4 @@
 .brand-motion span{font-size:clamp(48px,6.5vw,100px)}
 .hero-index{bottom:auto;top:32px}
 @media(max-width:700px){.brand-scene{top:auto;bottom:20px;right:20px;width:112px}.brand-motion span{font-size:30px}}
+
