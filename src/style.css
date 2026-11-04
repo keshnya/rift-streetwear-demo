@@ -39,3 +39,8 @@
 @keyframes rift-turn{from{transform:rotateY(-12deg) rotateX(3deg) rotateZ(-2deg)}to{transform:rotateY(12deg) rotateX(-3deg) rotateZ(2deg)}}
 @media(max-width:700px){.brand-scene{top:150px;right:18px;width:150px;transform:none}.brand-motion span{font-size:40px}}
 @media(prefers-reduced-motion:reduce){.brand-motion{animation:none;transform:none}}
+/* Position the animated signature away from the hero copy and controls. */
+.brand-scene{top:auto;bottom:10%;right:5%;width:clamp(180px,23vw,340px);transform:none}
+.brand-motion span{font-size:clamp(48px,6.5vw,100px)}
+.hero-index{bottom:auto;top:32px}
+@media(max-width:700px){.brand-scene{top:auto;bottom:20px;right:20px;width:112px}.brand-motion span{font-size:30px}}
