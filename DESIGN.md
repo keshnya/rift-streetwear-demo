@@ -1,6 +1,3 @@
-# RIFT visual refinements — 2026-11-04
+# RIFT visual direction
 
-Preserve black/lime streetwear palette, campaign photography and oversized lettering. Hero decoration is the restored wireframe torus knot, maximum 360px on desktop and 112px on phones. Ambient slow rotation, damped mouse response. Pause renderer offscreen and in hidden tabs; reduced motion renders a still 3D emblem. Pixel ratio capped at 1.5.
-
-New In uses native horizontal scrolling with hidden platform scrollbar, a 44px-tall accessible range control styled as a thin lime indicator, and labelled previous/next buttons. Smooth button scrolling honours reduced motion. Product sprite edges are cropped inside the component to remove white separators. Logo uses Lucide SVG to avoid emoji presentation on iOS.
-
+The hero uses a small dimensional lime RIFT wordmark with a slow alternating rotation. The wordmark stays compact on phones and becomes static for reduced motion. The product rail uses a keyboard accessible range control and previous/next buttons. Product image tiles crop the white dividers embedded in the original contact sheet.
